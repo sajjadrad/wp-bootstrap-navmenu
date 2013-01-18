@@ -1,7 +1,7 @@
 <?php
 /*
   Plugin Name: WP Bootstrap Menu
-  Version: 0.4.7
+  Version: 0.4.8
   Description: Convert Wordpress nav menu to Twitter Bootstrap style.
   Plugin URI: http://wordpress.org/extend/plugins/wp-bootstrap-navmenu/
   Author: Sajjad Rad
@@ -21,19 +21,21 @@
         $output = "";
         foreach ($items as $list)
         {
+
             if ($list->menu_item_parent != "0")
             {
+
                 if ($isParent and $firstChild)
                 {
                     $isParent = False;
                     $firstChild = False;
                     $hasChild = True;
-                    $output = $output."<li class=\"dropdown\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">".$last_title."<b class=\"caret\"></b></a><ul class=\"dropdown-menu\"><li><a href=\"".$list->url."\">".$list->post_title."</a></li>";
+                    $output = $output."<li class=\"dropdown\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">".$last_title."<b class=\"caret\"></b></a><ul class=\"dropdown-menu\"><li><a href=\"".$list->url."\">".$list->title."</a></li>";
                 }
                 else if ($hasChild and !$firstChild)
                 {
-                    $output = $output."<li><a href=\"".$list->url."\">".$list->post_title."</a></li>";
-
+                    $isParent = False;
+                    $output = $output."<li><a href=\"".$list->url."\">".$list->title."</a></li>";
                 }
             }
             else
@@ -53,6 +55,7 @@
                 $last_url = $list->url;
             }
         }
+        if($isParent) //If is parent and not printed.
+            $output = $output."<li><a href=\"".$last_url."\">".$last_title."</a></li>";
         return $output;
     }
-

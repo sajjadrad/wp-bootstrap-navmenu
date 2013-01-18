@@ -44,3 +44,7 @@ Example:
 = 0.4.7 =
 * First release.
 
+= 0.4.8 =
+* Fix Page title loading in link tag.
+* Fix showing last parent item.
+
