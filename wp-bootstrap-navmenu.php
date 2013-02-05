@@ -1,7 +1,7 @@
 <?php
 /*
   Plugin Name: WP Bootstrap Menu
-  Version: 1.0.4
+  Version: 1.0.5
   Description: Convert Wordpress nav menu to Twitter Bootstrap style.
   Plugin URI: http://wordpress.org/extend/plugins/wp-bootstrap-navmenu/
   Author: Sajjad Rad
@@ -59,7 +59,7 @@
                     }
                     else if ($level == 2)
                     {
-                        $output = $output."<li class=\"dropdown-submenu\"><a href=\"#\">".$last_title."</a><ul class=\"dropdown-menu\">";
+                        $output = $output."<li class=\"dropdown-submenu\"><a href=\"#\">".$last_title."</a><ul class=\"dropdown-menu sub-menu\">";
                         $last_title = $list->title;
                         $last_url = $list->url;
                         $level = 3;
