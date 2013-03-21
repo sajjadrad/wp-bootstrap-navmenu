@@ -22,6 +22,7 @@ Installation
 1. Upload `wp-bootstrap-navmenu.php` to the `/wp-content/plugins/wp-bootstrap-navmenu/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Style your bootstrap navmenu and place `<?php echo getNavMenu( MENU NAME ); ?>` in your templates to get menu list.
+1. To change options for dropdown item,you can set option argument when calling getNavMenu function.Dropdown has two options,"hover" and "click".In "click" option,dropdown items link address set to # and in "hover" option full address used.The default option set to "click".
 
 Example:
 ```
@@ -31,6 +32,23 @@ Example:
 				<ul class="nav">
 					<?php if (function_exists('getNavMenu')): ?>
 						<?php echo getNavMenu('mainmenu'); ?>
+					<?php endif; ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+```
+
+or:
+
+Example:
+```
+  <div class="navbar">
+		<div class="navbar-inner">  
+ 			<div class="container">
+				<ul class="nav">
+					<?php if (function_exists('getNavMenu')): ?>
+						<?php echo getNavMenu('mainmenu','hover'); ?>
 					<?php endif; ?>
 				</ul>
 			</div>
@@ -54,3 +72,6 @@ Changelog
 
 1.0.5
 * Dropdown hover problem fixed.
+
+1.1.0
+*Hover or click options for Dropdown items added.

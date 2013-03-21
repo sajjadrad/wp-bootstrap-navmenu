@@ -1,7 +1,7 @@
 <?php
 /*
   Plugin Name: WP Bootstrap Menu
-  Version: 1.0.5
+  Version: 1.1.0
   Description: Convert Wordpress nav menu to Twitter Bootstrap style.
   Plugin URI: http://wordpress.org/extend/plugins/wp-bootstrap-navmenu/
   Author: Sajjad Rad
@@ -9,7 +9,7 @@
  */
 
     $plugin_dir = plugin_basename(__FILE__);
-    function getNavMenu($menuName)
+    function getNavMenu($menuName,$dropDownOption = "click")
     {
         $menu = $menuName; //Nav menu name
         $items = wp_get_nav_menu_items($menu); // Get nav menu items list
@@ -51,7 +51,10 @@
                 {
                     if($level == 1)
                     {
-                        $output = $output."<li class=\"dropdown\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">".$last_title."<b class=\"caret\"></b></a><ul class=\"dropdown-menu\">";
+                        if($dropDownOption == "click")
+                            $output = $output."<li class=\"dropdown\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">".$last_title."<b class=\"caret\"></b></a><ul class=\"dropdown-menu\">";
+                        else
+                            $output = $output."<li class=\"dropdown\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"".$last_url."\">".$last_title."<b class=\"caret\"></b></a><ul class=\"dropdown-menu\">";
                         $last_title = $list->title;
                         $last_url = $list->url;
                         $level = 2;
@@ -59,7 +62,10 @@
                     }
                     else if ($level == 2)
                     {
-                        $output = $output."<li class=\"dropdown-submenu\"><a href=\"#\">".$last_title."</a><ul class=\"dropdown-menu sub-menu\">";
+                        if($dropDownOption == "click")
+                            $output = $output."<li class=\"dropdown-submenu\"><a href=\"#\">".$last_title."</a><ul class=\"dropdown-menu sub-menu\">";
+                        else
+                            $output = $output."<li class=\"dropdown-submenu\"><a href=\"".$last_url."\">".$last_title."</a><ul class=\"dropdown-menu sub-menu\">";
                         $last_title = $list->title;
                         $last_url = $list->url;
                         $level = 3;
