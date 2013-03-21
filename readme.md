@@ -41,7 +41,6 @@ Example:
 
 or:
 
-Example:
 ```
   <div class="navbar">
 		<div class="navbar-inner">  
@@ -74,4 +73,4 @@ Changelog
 * Dropdown hover problem fixed.
 
 1.1.0
-*Hover or click options for Dropdown items added.
+* Hover or click options for Dropdown items added.
